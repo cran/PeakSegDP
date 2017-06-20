@@ -1,0 +1,6 @@
+useDynLib(PeakSegDP)
+exportPattern("^[[:alpha:]]+")
+importFrom("graphics", "plot", "points")
+importFrom("stats", "quantile", "sd")
+importFrom("utils", "str")
+

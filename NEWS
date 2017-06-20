@@ -1,0 +1,61 @@
+2017.06.20
+
+depend on penaltyLearning, delete related code in this pkg.
+
+2016.08.06
+
+Suggest ggplot2 >= 2.0, new geom_tallrect implementation.
+
+cDPA C code now computes total Poisson loss which is consistent with
+the PoissonLoss R function, and with other packages (Segmentor3IsBack,
+coseg). It has been significantly cleaned up (duplication removed).
+
+2015.04.07
+
+move joint segmentation code to PeakSegJoint package.
+
+2015.04.02
+
+multiSampleSegZoom C function.
+
+R implementation of multiSampleSegSome.
+
+2015.03.27
+
+Scripts up to Step4 under exec/
+
+2015.03.23
+
+Error checking in binSum.
+
+chrom and sample ratio features in exec/Step1.R
+
+2015.03.16
+
+multiSampleSeg Optimal and Heuristic C code.
+
+2015.03.11
+
+clusterPeaks C code.
+
+LinDynProg.c renamed to cDPA to be consistent with paper.
+
+2015.03.05
+
+Do not use GSL headers for positive infinity cost; instead use
+INFINITY defined in "math.h"
+
+2015.03.03
+
+fista.R interval regression code.
+
+binSum C code sets count to -1 for profiles that are too short for the
+number of bins requested.
+
+2015.02.27
+
+binSum C code for quickly computing sums over bins of constant size.
+
+2014.11.10
+
+warning when user requests X peaks but that model is infeasible.
