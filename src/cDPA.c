@@ -1,61 +1,7 @@
 /* -*- compile-command: "R CMD INSTALL .." -*- */
 
-#include <R.h>
-#include <R_ext/Rdynload.h>
 #include <math.h>
-#include "clusterPeaks.h"
-#include "binSum.h"
-
-void clusterPeaks_interface
-(int *peakStart, int *peakEnd,
- int *cluster,
- int *peaks) {
-  int status;
-  status = clusterPeaks(peakStart, peakEnd, 
-			cluster,
-			*peaks);
-  if(status == ERROR_PEAKSTART_DECREASING){
-    error("peakStart decreasing");
-  }
-  if(status != 0){
-    error("unrecognized error code");
-  }
-}
-
-void binSum_interface(
-  int *profile_chromStart,
-  int *profile_chromEnd,
-  int *profile_coverage,
-  int *n_profiles,
-  int *bin_total,
-  int *bin_size,
-  int *n_bins,
-  int *bin_chromStart){
-  int status;
-  status = binSum(profile_chromStart, 
-		  profile_chromEnd,
-		  profile_coverage,
-		  *n_profiles,
-		  bin_total,
-		  *bin_size,
-		  *n_bins,
-		  *bin_chromStart, 0);
-  if(status == ERROR_CHROMSTART_NOT_LESS_THAN_CHROMEND){
-    error("chromStart not less than chromEnd");
-  }
-  if(status == ERROR_CHROMSTART_CHROMEND_MISMATCH){
-    error("chromStart[i] != chromEnd[i-1]");
-  }
-  if(status != 0){
-    error("error code %d", status);
-  }
-}
-
-// Memory efficient and with constraint Poisson dynamic programing
-// The constraint is \mu1 < \mu2 > \mu3 < \mu4 >....
-// For the Poisson we don't need to consider the factorial part
-// For the Poisson in the stand DP version we only to consider 
-// the \sum x_i ln(lambda) [at the max likelihood \sum_i \hat{\lambda_i} = \sum x_i
+#include "cDPA.h"
 
 double PoissonLoss(double xw, double w){
   // compute cost and mean for next step.
@@ -66,13 +12,17 @@ double PoissonLoss(double xw, double w){
   }
 }
 
+// Memory efficient and with constraint Poisson dynamic programing
+// The constraint is \mu1 < \mu2 > \mu3 < \mu4 >....
+// For the Poisson we don't need to consider the factorial part
+// For the Poisson in the stand DP version we only to consider 
+// the \sum x_i ln(lambda) [at the max likelihood \sum_i \hat{\lambda_i} = \sum x_i
+
 void cDPA
 (int *sequence, int *weights, 
- int *lgSeq, int *nStep, 
+ int n_data, int max_segments,
  double *cost_mat, int *end_mat, double *mean_mat
   ){
-  int n_data = *lgSeq;
-  int max_segments = *nStep;
   for(int i=0; i<n_data*max_segments; i++){ 
     cost_mat[i] = INFINITY;
     mean_mat[i] = INFINITY;
@@ -128,29 +78,3 @@ void cDPA
     }//seg_start
   }//seg_i
 }
-
-
-R_CMethodDef cMethods[] = {
-  {"clusterPeaks_interface",
-   (DL_FUNC) &clusterPeaks_interface, 4
-   //,{REALSXP, REALSXP, INTSXP, INTSXP, REALSXP}
-  },
-  {"binSum_interface",
-   (DL_FUNC) &binSum_interface, 9
-   //,{REALSXP, REALSXP, INTSXP, INTSXP, REALSXP}
-  },
-  {"cDPA",
-   (DL_FUNC) &cDPA, 7
-   //,{INTSXP, REALSXP, REALSXP, INTSXP}
-  },
-  {NULL, NULL, 0}
-};
-
-void R_init_PeakSegDP(DllInfo *info) {
-  R_registerRoutines(info, cMethods, NULL, NULL, NULL);
-  //R_useDynamicSymbols call says the DLL is not to be searched for
-  //entry points specified by character strings so .C etc calls will
-  //only find registered symbols.
-  R_useDynamicSymbols(info, FALSE);
-}
-    

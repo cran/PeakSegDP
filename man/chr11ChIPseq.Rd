@@ -32,6 +32,9 @@ ann.colors <-
     peakStart="#ffafaf",
     peakEnd="#ff4c4c",
     peaks="#a445ee")
+
+if(interactive() && require(ggplot2)){
+
 ggplot()+
   scale_fill_manual("annotation", values=ann.colors,
                     breaks=names(ann.colors))+
@@ -43,5 +46,8 @@ ggplot()+
   facet_grid(sample.id ~ ., scales="free")+
   geom_step(aes(chromStart/1e3, count), data=chr11ChIPseq$coverage)+
   xlab("position on chr11 (kilo base pairs)")
+
+}
+
 }
 \keyword{datasets}

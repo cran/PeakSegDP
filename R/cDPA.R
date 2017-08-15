@@ -15,7 +15,7 @@ cDPA <- structure(function
   stopifnot(length(count) == length(weight))
   stopifnot(length(maxSegments) == 1)
   nData <- length(count)
-  A <- .C("cDPA",
+  A <- .C("cDPA_interface",
           count=as.integer(count),
           weight=as.integer(weight),
           nData=as.integer(nData),

@@ -1,7 +1,7 @@
 Package: PeakSegDP
 Maintainer: Toby Dylan Hocking <toby.hocking@r-project.org>
 Author: Toby Dylan Hocking, Guillem Rigaill
-Version: 2017.06.20
+Version: 2017.08.15
 License: GPL-3
 Title: Dynamic Programming Algorithm for Peak Detection in ChIP-Seq
         Data
@@ -18,6 +18,6 @@ Description: A quadratic time dynamic programming algorithm
 Suggests: ggplot2 (>= 2.0), testthat, penaltyLearning
 Depends: R (>= 2.10)
 NeedsCompilation: yes
-Packaged: 2017-06-20 19:14:51 UTC; thocking
+Packaged: 2017-08-15 13:21:05 UTC; tdhock
 Repository: CRAN
-Date/Publication: 2017-06-20 23:23:02 UTC
+Date/Publication: 2017-08-15 21:39:42 UTC

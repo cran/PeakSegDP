@@ -42,7 +42,11 @@ for(data.type in names(both)){
   one <- subset(both[[data.type]], sample.id==one.sample)
   representations <- rbind(representations, data.frame(data.type, one))
 }
-one.sample.regions <- subset(chr11ChIPseq$regions, sample.id==one.sample)
+one.sample.regions <- subset(
+  chr11ChIPseq$regions, sample.id==one.sample)
+
+if(interactive() && require(ggplot2)){
+
 ggplot()+
   scale_fill_manual("annotation", values=ann.colors,
                     breaks=names(ann.colors))+
@@ -54,5 +58,8 @@ ggplot()+
   facet_grid(data.type ~ ., scales="free")+
   geom_step(aes(chromStart/1e3, count), data=representations)+
   xlab("position on chr11 (kilo base pairs)")
+
+}
+
 }
 \keyword{datasets}

@@ -1,3 +1,9 @@
+2017.08.15
+
+remove binSum.
+
+add cDPA_interface.
+
 2017.06.20
 
 depend on penaltyLearning, delete related code in this pkg.
