@@ -1,11 +1,10 @@
 \name{getPath}
 \alias{getPath}
 \title{getPath}
-\description{Extract endpoint matrix from cDPA result.}
+\description{Extract endpoint matrix from \code{\link{cDPA}} result.}
 \usage{getPath(A)}
 \arguments{
-  \item{A}{
-}
+  \item{A}{A }
 }
 
 

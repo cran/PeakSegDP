@@ -1,9 +1,10 @@
 \name{PeakSegDP}
 \alias{PeakSegDP}
 \title{PeakSegDP}
-\description{Compute the PeakSeg model on a data.frame of compressed sequence
+\description{Compute the PeakSeg model on a data.frame of \code{compressed} sequence
 reads.}
-\usage{PeakSegDP(compressed, maxPeaks)}
+\usage{PeakSegDP(compressed, 
+    maxPeaks)}
 \arguments{
   \item{compressed}{data.frame with columns chromStart, chromEnd, count.}
   \item{maxPeaks}{maximum number of peaks to consider.}

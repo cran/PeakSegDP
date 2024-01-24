@@ -1,67 +1,62 @@
-2017.08.15
+Changes in version 2024.1.24
 
-remove binSum.
+- reformat NEWS.
+- fix man pages for CRAN.
 
-add cDPA_interface.
+Changes in version 2017.08.15
 
-2017.06.20
+- remove binSum.
+- add cDPA_interface.
 
-depend on penaltyLearning, delete related code in this pkg.
+Changes in version 2017.06.20
 
-2016.08.06
+- depend on penaltyLearning, delete related code in this pkg.
 
-Suggest ggplot2 >= 2.0, new geom_tallrect implementation.
+Changes in version 2016.08.06
 
-cDPA C code now computes total Poisson loss which is consistent with
-the PoissonLoss R function, and with other packages (Segmentor3IsBack,
-coseg). It has been significantly cleaned up (duplication removed).
+- Suggest ggplot2 >= 2.0, new geom_tallrect implementation.
+- cDPA C code now computes total Poisson loss which is consistent with the PoissonLoss R function, and with other packages (Segmentor3IsBack, coseg). It has been significantly cleaned up (duplication removed).
 
-2015.04.07
+Changes in version 2015.04.07
 
-move joint segmentation code to PeakSegJoint package.
+- move joint segmentation code to PeakSegJoint package.
 
-2015.04.02
+Changes in version 2015.04.02
 
-multiSampleSegZoom C function.
+- multiSampleSegZoom C function.
+- R implementation of multiSampleSegSome.
 
-R implementation of multiSampleSegSome.
+Changes in version 2015.03.27
 
-2015.03.27
+- Scripts up to Step4 under exec/
 
-Scripts up to Step4 under exec/
+Changes in version 2015.03.23
 
-2015.03.23
+- Error checking in binSum.
+- chrom and sample ratio features in exec/Step1.R
 
-Error checking in binSum.
+Changes in version 2015.03.16
 
-chrom and sample ratio features in exec/Step1.R
+- multiSampleSeg Optimal and Heuristic C code.
 
-2015.03.16
+Changes in version 2015.03.11
 
-multiSampleSeg Optimal and Heuristic C code.
+- clusterPeaks C code.
+- LinDynProg.c renamed to cDPA to be consistent with paper.
 
-2015.03.11
+Changes in version 2015.03.05
 
-clusterPeaks C code.
+- Do not use GSL headers for positive infinity cost; instead use INFINITY defined in "math.h"
 
-LinDynProg.c renamed to cDPA to be consistent with paper.
+Changes in version 2015.03.03
 
-2015.03.05
+- fista.R interval regression code.
+- binSum C code sets count to -1 for profiles that are too short for the number of bins requested.
 
-Do not use GSL headers for positive infinity cost; instead use
-INFINITY defined in "math.h"
+Changes in version 2015.02.27
 
-2015.03.03
+- binSum C code for quickly computing sums over bins of constant size.
 
-fista.R interval regression code.
+Changes in version 2014.11.10
 
-binSum C code sets count to -1 for profiles that are too short for the
-number of bins requested.
-
-2015.02.27
-
-binSum C code for quickly computing sums over bins of constant size.
-
-2014.11.10
-
-warning when user requests X peaks but that model is infeasible.
+- warning when user requests X peaks but that model is infeasible.
